@@ -1,5 +1,7 @@
 alembic
 fastapi[all]
+fastapi_users[sqlalchemy]
+aiosqlite
 sqlalchemy
 uvicorn
 pydantic
@@ -9,6 +11,5 @@ asyncpg
 celery
 redis
 psycopg2-binary
-fastapi-cache2[redis]
 validators
 aioredis
