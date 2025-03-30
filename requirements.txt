@@ -1,0 +1,14 @@
+alembic
+fastapi[all]
+sqlalchemy
+uvicorn
+pydantic
+pydantic-settings
+dotenv
+asyncpg
+celery
+redis
+psycopg2-binary
+fastapi-cache2[redis]
+validators
+aioredis
