@@ -1,5 +1,5 @@
 import uuid
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import List
 
 from fastapi_users_db_sqlalchemy import SQLAlchemyBaseUserTable
@@ -9,28 +9,18 @@ from src.database import Base
 
 
 class User(SQLAlchemyBaseUserTable[int], Base):
-    id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
+    id: Mapped[int] = mapped_column(
+        Integer, primary_key=True, index=True
+    )
     email: Mapped[str] = mapped_column(
-        String(length=320), unique=True, index=True, nullable=False
+        String, unique=True, index=True, nullable=False
     )
     hashed_password: Mapped[str] = mapped_column(
-        String(length=1024), nullable=False
+        String, nullable=False
     )
-    registered_at: Mapped[datetime.timestamp] = mapped_column(
-        DateTime, default=datetime.utcnow, nullable=False
+    registered_at: Mapped[datetime] = mapped_column(
+        DateTime,
+        default=lambda: datetime.now(timezone.utc),
+        nullable=False
     )
-    is_active: Mapped[bool] = mapped_column(
-        Boolean, default=True, nullable=False
-    )
-    is_superuser: Mapped[bool] = mapped_column(
-        Boolean, default=False, nullable=False
-    )
-    is_verified: Mapped[bool] = mapped_column(
-        Boolean, default=True, nullable=False
-    )
-    links: Mapped[List["Link"]] = relationship(
-        "Link",
-        back_populates="author",
-        cascade="all, delete",
-        lazy="selectin"
-    )
+    links = relationship("links")
