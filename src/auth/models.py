@@ -3,8 +3,9 @@ from datetime import datetime, timezone
 from typing import List
 
 from fastapi_users_db_sqlalchemy import SQLAlchemyBaseUserTable
-from sqlalchemy import Integer, String, DateTime, Boolean
-from sqlalchemy.orm import Mapped, mapped_column, relationship
+from sqlalchemy import Integer, String, DateTime
+from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import relationship
 from src.database import Base
 
 
@@ -19,8 +20,8 @@ class User(SQLAlchemyBaseUserTable[int], Base):
         String, nullable=False
     )
     registered_at: Mapped[datetime] = mapped_column(
-        DateTime,
+        DateTime(timezone=True),
         default=lambda: datetime.now(timezone.utc),
         nullable=False
     )
-    links = relationship("links")
+    links = relationship("Link", back_populates="user")

@@ -1,11 +1,10 @@
 FROM python:3.9-slim
 
+COPY ./requirements.txt /app/requirements.txt
+
 WORKDIR /app
+RUN pip install --no-cache-dir -r requirements.txt
 
-COPY ./requirements.txt /code/requirements.txt
+COPY . /app
 
-RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
-
-COPY . .
-
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "5555"]
+CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
