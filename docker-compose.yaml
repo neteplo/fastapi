@@ -21,20 +21,6 @@ services:
     networks:
       - shortist_network
 
-#  migrations:
-#    build: .
-#    container_name: migrations_runner
-#    command: alembic upgrade head
-#    env_file:
-#      - .env
-#    volumes:
-#      - .:/src
-#    networks:
-#      - shortist_network
-#    depends_on:
-#      postgres:
-#        condition: service_healthy
-
   postgres:
     image: postgres:15
     container_name: postgres
