@@ -38,7 +38,6 @@ class LinkResponse(LinkBase):
 
 class LinkStatsResponse(LinkResponse):
     click_count: int = Field(example=42)
-    last_accessed_at: Optional[datetime] = Field(example=datetime.now(timezone.utc).isoformat())
 
 
 class LinkUpdate(BaseModel):
