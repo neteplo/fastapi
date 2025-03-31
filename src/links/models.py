@@ -13,6 +13,6 @@ class Link(Base):
     custom_alias = Column(String, unique=True, index=True, nullable=True)
     click_count = Column(Integer, nullable=False, default=0)
     created_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc), nullable=False)
-    expire_at = Column(DateTime, nullable=False)
+    expire_at = Column(DateTime(timezone=True), nullable=True)
     user_id = Column(Integer, ForeignKey("user.id"), nullable=True)
-    user = relationship("User", back_populates="links")
+    user = relationship("User", back_populates="links", lazy="selectin")

@@ -21,8 +21,6 @@ async def get_user_db(session: AsyncSession = Depends(get_db)):
 async def get_user_manager(user_db: SQLAlchemyUserDatabase = Depends(get_user_db)):
     yield UserManager(user_db)
 
-
 fastapi_users = FastAPIUsers[User, int](get_user_manager, [auth_backend])
-get_current_user_or_none = fastapi_users.current_user(optional=True)
-get_current_user = fastapi_users.current_user()
-get_admin_user = fastapi_users.current_user(superuser=True)
+current_optional_user = fastapi_users.current_user(optional=True)
+current_user = fastapi_users.current_user()

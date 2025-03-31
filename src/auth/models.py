@@ -24,4 +24,7 @@ class User(SQLAlchemyBaseUserTable[int], Base):
         default=lambda: datetime.now(timezone.utc),
         nullable=False
     )
-    links = relationship("Link", back_populates="user")
+    links: Mapped[List["Link"]] = relationship(
+        "Link",
+        back_populates="user",
+        lazy="selectin")
