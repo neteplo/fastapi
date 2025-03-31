@@ -44,7 +44,6 @@ async def get_link_by_short_id(db: AsyncSession, short_id: str) -> Optional[mode
 
 async def increment_click_count(db: AsyncSession, link: models.Link) -> None:
     link.click_count += 1
-    link.last_accessed_at = datetime.now(timezone.utc)
     await db.commit()
 
 

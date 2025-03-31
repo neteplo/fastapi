@@ -59,8 +59,7 @@ async def get_link_stats(
     return {
         "original_url": link.original_url,
         "created_at": link.created_at,
-        "click_count": link.click_count,
-        "last_used": link.last_accessed_at
+        "click_count": link.click_count
     }
 
 
