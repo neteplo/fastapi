@@ -58,8 +58,11 @@ async def get_link_stats(
 
     return {
         "original_url": link.original_url,
+        "short_id": link.short_id,
+        "custom_alias": link.custom_alias,
         "created_at": link.created_at,
-        "click_count": link.click_count
+        "expire_at": link.expire_at,
+        "click_count": link.click_count,
     }
 
 

@@ -34,7 +34,7 @@ POST /auth/register
 #### Вход пользователя
 ```http
 POST /auth/jwt/login
-grant_type=password&username=user@example.com&password=string
+grant_type=password&username=username@example.com&password=password
 ```
 
 #### Выход пользователя
