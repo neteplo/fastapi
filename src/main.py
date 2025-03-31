@@ -4,10 +4,8 @@ from src.auth.auth import auth_backend
 from src.auth.schemas import UserRead, UserCreate
 from src.auth.manager import fastapi_users
 from src.links.routers import router as links_router
-
 from src.auth.models import User  # noqa: F401
 from src.links.models import Link  # noqa: F401
-
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()

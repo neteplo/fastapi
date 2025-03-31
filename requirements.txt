@@ -1,6 +1,7 @@
 alembic
 fastapi[all]
 fastapi_users[sqlalchemy]
+fastapi_cache
 aiosqlite
 sqlalchemy
 uvicorn
